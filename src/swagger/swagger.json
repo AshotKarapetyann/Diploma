@@ -1,0 +1,858 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Simple documentation for internet shop API`s",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licneses/MIT"
+        }    
+    },
+    "host": "localhost:3000",
+    "basePath": "/", 
+    "tags": [
+        
+        {
+          "name": "Types",
+          "description": ""
+        },
+        {
+          "name": "Shops",
+          "description": ""
+        },
+        {
+          "name": "Colors",
+          "description": ""
+        },
+        {
+          "name": "Sizes",
+          "description": ""
+        },
+        {
+          "name": "Products",
+          "description": ""
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/v1/shop":{
+            "post": {
+                "tags": ["Shops"],
+                "summary": "Add new shop in DB",
+                "responses": {
+                    "200": {
+                      "description": "Succsesfully Created"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                  },
+                    "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                                "shop_name" : "shop",
+                                "types": 1
+                            }
+                        }
+                    }
+                    ]
+                },
+
+            "get": {
+                "tags": ["Shops"],
+                "summary": "Get all shops from DB",
+                "responses": {
+                    "200": {
+                      "description": "OK",
+                      "schema": {
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+    
+        "/v1/shop/{id}": {
+            "get": {
+                "tags": ["Shops"],
+                "summary": "Find shop by ID",
+                "operationId": "getById",
+                "responses": {
+                  "200": {
+                  "description": "OK",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                },   
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of shop to return",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            },
+
+            "patch": {
+                "tags": ["Shops"],
+                "summary": "Update shop by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of shop to be updated",
+                        "type": "number",
+                        "required": true
+                    }, 
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "property that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                            "shop_name": "new Shop"
+                            }
+                        }
+                    }
+                ]
+            },
+
+            "delete": {
+                "tags": ["Shops"],
+                "summary": "Delete shop by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of shop to be Deleted",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        } ,
+
+        "/v1/type/":{
+            "post": {
+                "tags": ["Types"],
+                "summary": "Add new type in DB",
+                "responses": {
+                    "200": {
+                      "description": "Succsesfully Created"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                  },
+                    "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                                "type_name" : "type"
+                            }
+                        }
+                    }
+                    ]
+                },
+
+            "get": {
+                "tags": ["Types"],
+                "summary": "Get all types from DB",
+                "responses": {
+                  "200": {
+                    "description": "OK"
+                  },
+                  "404": {
+                     "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                }
+            }
+        },
+    
+        "/v1/type/{id}": {
+            "get": {
+                "tags": ["Types"],
+                "summary": "Find type by ID",
+                "operationId": "getById",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                },   
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of type to return",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            },
+
+            "patch": {
+                "tags": ["Types"],
+                "summary": "Update type by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of type to be updated",
+                        "type": "number",
+                        "required": true
+                    }, 
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "property that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                            "type_name": "new type"
+                            }
+                        }
+                    }
+                ]
+            },
+
+            "delete": {
+                "tags": ["Types"],
+                "summary": "Delete type by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of type to be Deleted",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        },
+
+        "/v1/product/":{
+            "post": {
+                "tags": ["Products"],
+                "summary": "Add new prodcut in DB",
+                "responses": {
+                    "200": {
+                      "description": "Succsesfully Created"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                  },
+                    "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                              "product_name": "product",
+                              "price": 10,
+                              "type": 1,
+                              "quantity": 10,
+                              "shop": 1,
+                              "color": 1,
+                              "sizes": 1
+                            }
+                        }
+                    }
+                    ]
+                },
+
+            "get": {
+                "tags": ["Products"],
+                "summary": "Get all prodcuts from DB",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                }
+            }
+        },
+    
+        "/v1/product/{id}": {
+            "get": {
+                "tags": ["Products"],
+                "summary": "Find product by ID",
+                "operationId": "getById",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                },   
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to return",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            },
+
+            "patch": {
+                "tags": ["Products"],
+                "summary": "Update product by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to be updated",
+                        "type": "number",
+                        "required": true
+                    }, 
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "property that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                            "product_name": "new product"
+                            }
+                        }
+                    }
+                ]
+            },
+
+            "delete": {
+                "tags": ["Products"],
+                "summary": "Delete product by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to be Deleted",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/v1/color/":{
+            "post": {
+                "tags": ["Colors"],
+                "summary": "Add new color in DB",
+                "responses": {
+                    "200": {
+                      "description": "Succsesfully Created"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                  },
+                    "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                                "color_name" : "color"
+                            }
+                        }
+                    }
+                    ]
+                },
+
+            "get": {
+                "tags": ["Colors"],
+                "summary": "Get all colors from DB",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                }
+            }
+        },
+    
+        "/v1/color/{id}": {
+            "get": {
+                "tags": ["Colors"],
+                "summary": "Find color by ID",
+                "operationId": "getById",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                },   
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of color to return",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            },
+
+            "patch": {
+                "tags": ["Colors"],
+                "summary": "Update color by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of color to be updated",
+                        "type": "number",
+                        "required": true
+                    }, 
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "property that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                            "color_name": "new color"
+                            }
+                        }
+                    }
+                ]
+            },
+
+            "delete": {
+                "tags": ["Colors"],
+                "summary": "Delete color by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of color to be Deleted",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/v1/size/":{
+            "post": {
+                "tags": ["Sizes"],
+                "summary": "Add new size in DB",
+                "responses": {
+                    "200": {
+                      "description": "Succsesfully Created"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                  },
+                    "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                                "size_name" : "size"
+                            }
+                        }
+                    }
+                    ]
+                },
+
+            "get": {
+                "tags": ["Sizes"],
+                "summary": "Get all sizes from DB",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                }
+            }
+        },
+    
+        "/v1/size/{id}": {
+            "get": {
+                "tags": ["Sizes"],
+                "summary": "Find size by ID",
+                "operationId": "getById",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                },
+                  "404": {
+                    "description": "Not found"
+                  },
+                  "405": {
+                    "description": "Invalid input"
+                  },
+                  "500": {
+                    "description": "Internal Server Error"
+                  }
+                },   
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of size to return",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            },
+
+            "patch": {
+                "tags": ["Sizes"],
+                "summary": "Update size by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of size to be updated",
+                        "type": "number",
+                        "required": true
+                    }, 
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "property that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "example": {
+                            "size_name": "new size"
+                            }
+                        }
+                    }
+                ]
+            },
+
+            "delete": {
+                "tags": ["Sizes"],
+                "summary": "Delete size by ID",
+                "operationId": "getById",
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "404": {
+                      "description": "Not found"
+                    },
+                    "405": {
+                      "description": "Invalid input"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of size to be Deleted",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    }
+}
